@@ -94,6 +94,48 @@ Final Expression : D.(C' + B').(A + B)
 
 
 
+## Decoder
 
+A binary code of n bits is capable of representing 2^n coded information which is pretty huge.In terms of numbers a n bit code can represent numbers from -(2^n - 1) to 2^n - 1.
+
+Decoder is a **combinational** circuit that converts binary information from **n input lines** to **2^n output lines**.
+It represents the basic calculation of decimal number system from binary number system as mentioned before.
+
+If a binary decoder receives n inputs it activates one and only one of its 2^n outputs based on that input with all other outputs deactivated.
+
+A 3x8 binary decoder looks like this:
+
+![](https://media.geeksforgeeks.org/wp-content/uploads/666.png) **OR** <img src ="https://www.elprocus.com/wp-content/uploads/decoder-block-diagram.jpg" width = "400" height = "500">
+
+The intuition behind it is that the inputs can be supposed to be diiferent input switches and the output lines could be different LED's, so when a combination of input is given through the switches, only the LED with that combination glows and all the other LED's do not glow.
+
+The truth table is as follows:
+
+![](https://www.electrical4u.com/images/february16/1460009218.PNG)  
+
+When enable pin is 0 the circuit is not started and when it is 1, the circuit works in the original way.
+
+Similarly there are 2x4 and 4x16 decoders also.
+
+
+
+## Encoder
+
+An encoder performs opposite operation to that of a decoder.It has 2^n or fewer input lines and n output lines.
+Output lines generate binary code corresponding to the input values.
+
+Only one input line should be high and corresponding to that a combination of output lines light up or are generated and the other remain low.
+
+for example an octal to binary encoder:  has eight input lines(Y0-Y7) and three output lines(A0-A2)
+
+![](https://www.tutorialspoint.com/digital_circuits/images/octal_to_binary_encoder_circuit_diagram.jpg)
+
+The truth table for it is as follows:
+
+![](https://circuitdigest.com/sites/default/files/inlineimages/u/8-to-3-Encoder-Tuth-Table.png)
+
+Since, A0 = Y1 + Y3 + Y5 + Y7    ,   A1 = Y2 + Y3 + Y6 + Y7   ,  A2 = Y4 + Y5 + Y6 + Y7
+
+However ther's one **Anomally** with an encoder which is if all the ouptut lines are 0 , it could be if all the inputs are 0 or the least significant input is 0.
 
 
