@@ -139,3 +139,105 @@ Since, A0 = Y1 + Y3 + Y5 + Y7    ,   A1 = Y2 + Y3 + Y6 + Y7   ,  A2 = Y4 + Y5 + 
 However ther's one **Anomally** with an encoder which is if all the ouptut lines are 0 , it could be if all the inputs are 0 or the least significant input is 0.
 
 
+
+## Sequential Circuits
+
+Sequential circuits are circuits in which the present output depend on the present input as well as the past output/outputs.
+Basically, there's a memory element which stores the output and provides that as a feedback or another set of input to its own circuit to generate a new output.The basic difference between the sequential and combinational circuits are these memory blocks.
+
+<p align ="center">
+<img src="https://www.tutorialspoint.com/digital_circuits/images/sequential_circuit.jpg"/>)
+</p>  
+
+You can think of it as a counter which counts from 0 to 9 by adding 1 bit each time. So it adds 0+1=1, 1+1=2, 2+1=3...... and so it should know what the previous digit was or on what to add 1.Thus a memory element stores what the previous digit was.
+
+These memory elements which are capable of storing one bit of information are known as **flip flops**.
+
+Before coming to the flip flops, let's know about **latches** which are the most basic and primitive form of flip flops and used as memory elements.
+Certain types of latches are:
+
+  **SR Latch**
+  
+It is the Set Reset Latch and there are two forms of it using the NOR gate and the NAND gate.  
+
+1. **NOR Latch**
+
+<p align ="center">
+<img src = "https://sub.allaboutcircuits.com/images/04173.png">
+</p>  
+
+  Two cross coupled NOR gates
+  
+  R:Reset ,S:Set , Q and Q' : Complementary outputs
+  
+* Q = 1 and Q' = 0 : Set state of the Latch
+
+* Q = 0 and Q' = 1 : Reset state of the Latch
+
+  Recall for NOR gates: any input if 1 will make the output 0 , output will be 1 only if all inputs are 0
+  
+Now let's look at the different cases:
+
+Now make S = 1 ( keeping R = 0 )
+=> Immediately Q' = 0 , and it is fed back to NOR1, which already has one of its input (R) = 0
+
+=> Q = 1 (and Q' = 0 )
+=> Set state of the latch
+
+Now if we remove the inputs it should retain the output as it is working as a memory element. Thus making S=0 & R=0 and Q' = 0 will lead to Q remaining as 1 
+
+When Q fed to second NOR it would let Q'=0 thus serving as memory storage.
+
+Now make R = 1 ( keeping S = 0 ) immediately Q = 0 , and it is fed back to NOR2, which already has one of its i/p (S) = 0
+
+=> Q' = 1 (and Q = 0 )
+
+=>**Reset** state of the latch
+
+Thus when now, R = 0 & S = 0, this would make no difference to the output. Hence **memory action**.
+
+When S = 1 and R = 1 both Q = 0 and Q' = 0 irrespective of the previous inputs.
+
+Thus now when S = 0 and R = 0 in memory state since both Q and Q' are 0, it would lead to making either Q or Q' equal to 1 whichever input reached faster the other NOR gate. Thus the purpose of storing the output is not served.
+
+For NOR Latch, S= 1 & R = 1 condition is **Not Allowed**.
+
+The truth table of NOR Latch is:
+
+<p align ="center">
+<img src = "https://electronicspost.com/wp-content/uploads/2015/05/24.png">
+</p>
+
+2. **NAND Latch**
+
+<p align ="center">
+<img src = "https://cdn.sparkfun.com/assets/learn_tutorials/2/1/6/34-sr-latch-nand.png">
+</p>
+
+* Two cross - coupled NAND gates
+
+* Note the difference with NOR
+
+Latch : Here, S drives the Q output and R drives the Q' output
+
+=>Exactly opposite to that of NOR Latch
+
+Recall : For NAND gates : Any (or both) input 0 will make the output 1 , for output to be 0, both inputs must be 1
+
+Now, if S is made 0 ( with R at 1 ), Q becomes 1 , fed back to NAND2, and with R and Q both 1, Q' = 0 .The latch is now **Set**  
+
+If now S is reverted to 1 with R = 1 , no change in the outputs (**memory action**)
+
+Now if S = 1 and R = 0 , Q' becomes 1 , fed back to NAND1, and with S and Q' both 1, Q =0 .The latch is now **Reset**.
+
+If now R is reverted to 1 and S = 1 , there's no change in the outputs (**memory action**)
+
+Now if we make S = 0 , R = 0 , both Q and Q' become 1.    **The same inconsistency as the NOR latch**.
+
+**Hence this combinaion is not allowed**
+
+The truth table of NAND Latch is:
+
+<p align ="center">
+<img src = "https://lh3.googleusercontent.com/proxy/09VA8fASn942Ge49Atrqlo_o-HZm7fTbRfP-xsFWBbq6b8Ff5Fv86gu98TneHxg_F6XJhkclRkyy">
+</p>
